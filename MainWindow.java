@@ -1,5 +1,6 @@
 
 import javax.swing.*;
+import javax.swing.JFrame;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.*;
@@ -13,7 +14,7 @@ public class MainWindow extends JFrame {
 	JButton btnSelectColor, btnApplyFill;
 	JButton btnClippingWindow, btnApplyClip;
 	JButton btnApplyTransformation;
-	JButton btnminimize;
+	JButton btnminimize, btnrestore;
 	
 	JComboBox<String> jcb_transformations;
 	JComboBox<String> jcb_shearOptions;
@@ -54,6 +55,7 @@ public class MainWindow extends JFrame {
 		
 		//Top and Bottom Borders---------------------------------------------------------------------------
 		btnClose = new JButton(new ImageIcon("icons/close.png"));
+		btnrestore = new JButton (new ImageIcon(new ImageIcon ("icons/restore.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT)));
 		btnminimize = new JButton(new ImageIcon(new ImageIcon("icons/window-minimize-solid.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT)));
 		JButton b1 = new JButton(new ImageIcon(new ImageIcon("icons/eye-regular.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT)));
 		JButton b = new JButton(new ImageIcon(new ImageIcon("icons/eye-slash-regular.png").getImage().getScaledInstance(40, 30, Image.SCALE_DEFAULT)));
@@ -77,6 +79,14 @@ public class MainWindow extends JFrame {
 		btnminimize.setBorderPainted(false);
 		btnminimize.addActionListener(new btnCloseHandler());
 		jp_top.add(btnminimize);
+		
+		//Adding restore down button
+		btnrestore.setBounds(1075, 3, 95, 55);
+		btnrestore.setBackground(Color.blue); // Customize the color
+		btnrestore.setFocusable(false);
+		btnrestore.setBorderPainted(false);
+		btnrestore.addActionListener(new btnCloseHandler());
+		jp_top.add(btnrestore);
 		
 		//Adding a close button
 		
@@ -590,6 +600,9 @@ public class MainWindow extends JFrame {
 	        	drawingPanel.setVisible(true);
 	        }
 	    });
+
+		
+
 	  //  jp_fill.add(b);
 	   // jp_controls.add(b);
 	    jp_top.add(b);
@@ -604,6 +617,8 @@ public class MainWindow extends JFrame {
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+
+	
 	
 	public class btnCloseHandler implements ActionListener {
 
