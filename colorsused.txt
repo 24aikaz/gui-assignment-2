@@ -1,0 +1,22 @@
+Main color palette of the application
+
+#DEE1DD -light whitish gray
+Color light_whitish_gray = new Color(222, 225, 221);
+
+#CACDC1 -whitish gray
+Color whitish_gray = new Color(202, 205, 193);
+
+#99AEAD -light bluish gray
+Color light_bluish_gray = new Color(153, 174, 173);
+
+#6D9197 -bluish gray
+Color bluish_gray = new Color(109, 145, 151);
+
+#658B6F -light grayish green
+Color light_grayish_green = new Color(101, 139, 111);
+
+#2F575d -dark bluish gray
+Color dark_bluish_gray = new Color(47, 87, 93);
+
+#28363D - dark grayish green
+Color dark_grayish_green = new Color(40, 54, 61);
