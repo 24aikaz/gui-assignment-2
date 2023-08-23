@@ -129,6 +129,7 @@ public class welcome extends JFrame{
         start_btn.setBackground(light_whitish_gray);
         start_btn.setBorderPainted(false);
         start_btn.setFocusPainted(false);
+        start_btn.setToolTipText("Click to start drawing");
         start_btn.addActionListener(new btnStartHandler());
         btn_container.add(start_btn);
         button_panel.add(btn_container);
