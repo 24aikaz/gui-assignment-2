@@ -182,10 +182,10 @@ public class MainWindow2 extends JFrame {
         line_btn = new JButton(new ImageIcon(new ImageIcon("icons/slash-solid.png").getImage().getScaledInstance(16, 16, Image.SCALE_DEFAULT)));
         shapes_container.add(line_btn);
 
-        circle_btn = new JButton(new ImageIcon(new ImageIcon("icons/square-regular.png").getImage().getScaledInstance(16, 16, Image.SCALE_DEFAULT)));
+        circle_btn = new JButton(new ImageIcon(new ImageIcon("icons/circle-regular.png").getImage().getScaledInstance(16, 16, Image.SCALE_DEFAULT)));
         shapes_container.add(circle_btn);
 
-        square_btn = new JButton(new ImageIcon(new ImageIcon("icons/chevron-left-solid.png").getImage().getScaledInstance(16, 16, Image.SCALE_DEFAULT)));
+        square_btn = new JButton(new ImageIcon(new ImageIcon("icons/square-regular.png").getImage().getScaledInstance(16, 16, Image.SCALE_DEFAULT)));
         shapes_container.add(square_btn);
 
         polygon_btn = new JButton(new ImageIcon(new ImageIcon("icons/draw-polygon-solid.png").getImage().getScaledInstance(16, 16, Image.SCALE_DEFAULT)));
@@ -217,9 +217,10 @@ public class MainWindow2 extends JFrame {
         JPanel transform_container = new JPanel(new GridLayout(2, 1));
 
         transform_picker_btn = new JButton("Choose transformation");
+        transform_picker_btn.addActionListener(new transformDetails());
         transform_container.add(transform_picker_btn);
-
-        transformations(); // To add transformation details
+        transformations();
+        transformation_panel.setVisible(false);
 
         transform_panel.add(transform_container, BorderLayout.CENTER);
 
@@ -260,22 +261,37 @@ public class MainWindow2 extends JFrame {
 
         full_menu_panel.add(tools_container, BorderLayout.CENTER);
     }
+    public class transformDetails implements ActionListener{
+        public void actionPerformed(ActionEvent e) {
+            transformation_panel.setVisible(true);
+		}
+    }    
 
     public void transformations(){
         transformation_panel = new JPanel(new BorderLayout());
         transformation_panel.setPreferredSize(new Dimension(400, Toolkit.getDefaultToolkit().getScreenSize().height));
         JPanel header2 = new JPanel(new BorderLayout());
         tranform_close_btn = new JButton(new ImageIcon(new ImageIcon("icons/close.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+        tranform_close_btn.addActionListener(new transformClose());
         header2.add(tranform_close_btn, BorderLayout.WEST);
         JLabel transform_title = new JLabel("Configuration");
         header2.add(transform_title, BorderLayout.CENTER);
         transformation_panel.add(header2, BorderLayout.NORTH);
 
+        
+        
+        
         apply_transform_btn = new JButton(new ImageIcon(new ImageIcon("icons/wand-sparkles-solid.png").getImage().getScaledInstance(16, 16, Image.SCALE_DEFAULT)));
-        transformation_panel.add(apply_transform_btn);
+        transformation_panel.add(apply_transform_btn, BorderLayout.SOUTH);
 
         content_panel.add(transformation_panel, BorderLayout.EAST);
     }
+
+    public class transformClose implements ActionListener{
+        public void actionPerformed(ActionEvent e) {
+            transformation_panel.setVisible(false);
+		}
+    } 
     
 
     public static void main(String[] args) {
