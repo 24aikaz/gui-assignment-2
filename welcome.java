@@ -39,23 +39,23 @@ public class welcome extends JFrame{
         JPanel button_container = new JPanel(new FlowLayout());
         button_container.setBackground(light_bluish_gray);
         
-        close_btn = new JButton(new ImageIcon(new ImageIcon("icons/close2.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+        close_btn = new JButton(new ImageIcon(new ImageIcon("icons/normal/close2.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
         close_btn.setBackground(light_bluish_gray);
         close_btn.setBorderPainted(false);
         close_btn.setFocusPainted(false);
         close_btn.addActionListener(new btnCloseHandler());
 
-        resize_btn = new JButton(new ImageIcon(new ImageIcon("icons/resize.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+        resize_btn = new JButton(new ImageIcon(new ImageIcon("icons/normal/resize.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
         resize_btn.setBackground(light_bluish_gray);
         resize_btn.setBorderPainted(false);
         resize_btn.setFocusPainted(false);
 
-        minimize_btn = new JButton(new ImageIcon(new ImageIcon("icons/minimize.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+        minimize_btn = new JButton(new ImageIcon(new ImageIcon("icons/normal/minimize.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
         minimize_btn.setBackground(light_bluish_gray);
         minimize_btn.setBorderPainted(false);
         minimize_btn.setFocusPainted(false);
 
-        maximize_btn = new JButton(new ImageIcon(new ImageIcon("icons/window-maximize.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+        maximize_btn = new JButton(new ImageIcon(new ImageIcon("icons/normal/window-maximize.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
         maximize_btn.setBackground(light_bluish_gray);
         maximize_btn.setBorderPainted(false);
         maximize_btn.setFocusPainted(false);
@@ -129,7 +129,7 @@ public class welcome extends JFrame{
         button_panel.setBackground(light_whitish_gray);
         JPanel btn_container = new JPanel(new FlowLayout());
         btn_container.setBackground(light_whitish_gray);
-        start_btn = new JButton(new ImageIcon(new ImageIcon("icons/power-off-solid.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+        start_btn = new JButton(new ImageIcon(new ImageIcon("icons/normal/power-off-solid.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
         start_btn.setBackground(light_whitish_gray);
         start_btn.setBorderPainted(false);
         start_btn.setFocusPainted(false);
@@ -154,7 +154,7 @@ public class welcome extends JFrame{
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                close_btn.setBackground(light_bluish_gray);
-               close_btn.setIcon(new ImageIcon(new ImageIcon("icons/close2.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+               close_btn.setIcon(new ImageIcon(new ImageIcon("icons/normal/close2.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
             }
         });
         resize_btn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -163,7 +163,7 @@ public class welcome extends JFrame{
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                resize_btn.setBackground(light_bluish_gray);
-               resize_btn.setIcon(new ImageIcon(new ImageIcon("icons/resize.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+               resize_btn.setIcon(new ImageIcon(new ImageIcon("icons/normal/resize.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
             }
         });
         minimize_btn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -172,7 +172,7 @@ public class welcome extends JFrame{
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                minimize_btn.setBackground(light_bluish_gray);
-               minimize_btn.setIcon(new ImageIcon(new ImageIcon("icons/minimize.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+               minimize_btn.setIcon(new ImageIcon(new ImageIcon("icons/normal/minimize.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
             }
         });
         maximize_btn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -181,7 +181,7 @@ public class welcome extends JFrame{
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                maximize_btn.setBackground(light_bluish_gray);
-               maximize_btn.setIcon(new ImageIcon(new ImageIcon("icons/window-maximize.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+               maximize_btn.setIcon(new ImageIcon(new ImageIcon("icons/normal/window-maximize.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
             }
         });
         start_btn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -190,7 +190,7 @@ public class welcome extends JFrame{
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                start_btn.setBackground(light_whitish_gray);
-               start_btn.setIcon(new ImageIcon(new ImageIcon("icons/power-off-solid.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
+               start_btn.setIcon(new ImageIcon(new ImageIcon("icons/normal/power-off-solid.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
             }
         });
     }

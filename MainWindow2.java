@@ -17,6 +17,12 @@ public class MainWindow2 extends JFrame {
     Color dark_bluish_gray = new Color(47, 87, 93);
     Color dark_grayish_green = new Color(40, 54, 61);
 
+    // Font sizes
+    int h3 = 18;
+    int h4 = 14;
+    int h5 = 16;
+    int h6 = 12;
+
     drawShape ds;
 
     drawClippingWindow cw;
@@ -70,23 +76,23 @@ public class MainWindow2 extends JFrame {
         JPanel button_container = new JPanel(new FlowLayout());
         button_container.setBackground(light_bluish_gray);
         
-        close_btn = new JButton(new ImageIcon(new ImageIcon("icons/close2.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+        close_btn = new JButton(new ImageIcon(new ImageIcon("icons/normal/close2.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
         close_btn.setBackground(light_bluish_gray);
         close_btn.setBorderPainted(false);
         close_btn.setFocusPainted(false);
         close_btn.addActionListener(new btnCloseHandler());
 
-        resize_btn = new JButton(new ImageIcon(new ImageIcon("icons/resize.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+        resize_btn = new JButton(new ImageIcon(new ImageIcon("icons/normal/resize.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
         resize_btn.setBackground(light_bluish_gray);
         resize_btn.setBorderPainted(false);
         resize_btn.setFocusPainted(false);
 
-        minimize_btn = new JButton(new ImageIcon(new ImageIcon("icons/minimize.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+        minimize_btn = new JButton(new ImageIcon(new ImageIcon("icons/normal/minimize.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
         minimize_btn.setBackground(light_bluish_gray);
         minimize_btn.setBorderPainted(false);
         minimize_btn.setFocusPainted(false);
 
-        maximize_btn = new JButton(new ImageIcon(new ImageIcon("icons/window-maximize.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+        maximize_btn = new JButton(new ImageIcon(new ImageIcon("icons/normal/window-maximize.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
         maximize_btn.setBackground(light_bluish_gray);
         maximize_btn.setBorderPainted(false);
         maximize_btn.setFocusPainted(false);
@@ -116,7 +122,7 @@ public class MainWindow2 extends JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                close_btn.setBackground(light_bluish_gray);
-               close_btn.setIcon(new ImageIcon(new ImageIcon("icons/close2.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+               close_btn.setIcon(new ImageIcon(new ImageIcon("icons/normal/close2.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
             }
         });
         resize_btn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -125,7 +131,7 @@ public class MainWindow2 extends JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                resize_btn.setBackground(light_bluish_gray);
-               resize_btn.setIcon(new ImageIcon(new ImageIcon("icons/resize.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+               resize_btn.setIcon(new ImageIcon(new ImageIcon("icons/normal/resize.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
             }
         });
         minimize_btn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -134,7 +140,7 @@ public class MainWindow2 extends JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                minimize_btn.setBackground(light_bluish_gray);
-               minimize_btn.setIcon(new ImageIcon(new ImageIcon("icons/minimize.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+               minimize_btn.setIcon(new ImageIcon(new ImageIcon("icons/normal/minimize.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
             }
         });
         maximize_btn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -143,7 +149,7 @@ public class MainWindow2 extends JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                maximize_btn.setBackground(light_bluish_gray);
-               maximize_btn.setIcon(new ImageIcon(new ImageIcon("icons/window-maximize.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+               maximize_btn.setIcon(new ImageIcon(new ImageIcon("icons/normal/window-maximize.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
             }
         });
 
@@ -165,13 +171,23 @@ public class MainWindow2 extends JFrame {
         menu_panel = new JPanel(new BorderLayout());
         menu_panel.setPreferredSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width, 40));
         menu_panel.setBackground(bluish_gray);
-        menu_btn_collapse = new JButton(new ImageIcon(new ImageIcon("icons/bars-solid.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT)));
+        menu_btn_collapse = new JButton(new ImageIcon(new ImageIcon("icons/normal/chevron-down.png").getImage().getScaledInstance(25, 25, Image.SCALE_DEFAULT)));
         menu_btn_collapse.setBorderPainted(false);
         menu_btn_collapse.setBackground(bluish_gray);
         menu_btn_collapse.setFocusPainted(false);
         menu_btn_collapse.addActionListener(new menuExpand());
         menu_panel.add(menu_btn_collapse, BorderLayout.WEST);
         content_panel.add(menu_panel, BorderLayout.NORTH);
+
+        menu_btn_collapse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+               menu_btn_collapse.setIcon(new ImageIcon(new ImageIcon("icons/hover/chevron-down-hover.png").getImage().getScaledInstance(25, 25, Image.SCALE_DEFAULT)));
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+               menu_btn_collapse.setBackground(bluish_gray);
+               menu_btn_collapse.setIcon(new ImageIcon(new ImageIcon("icons/normal/chevron-down.png").getImage().getScaledInstance(25, 25, Image.SCALE_DEFAULT)));
+            }
+        });
     }
 
     public class menuExpand implements ActionListener{
@@ -183,16 +199,26 @@ public class MainWindow2 extends JFrame {
 
     public void RenderMenu(){
         full_menu_panel = new JPanel(new BorderLayout());
-        full_menu_panel.setPreferredSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width, 200));
+        full_menu_panel.setPreferredSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width, 150));
         full_menu_panel.setBackground(bluish_gray);
 
         JPanel header = new JPanel(new BorderLayout(ALLBITS, ABORT));
-        menu_btn_expand = new JButton(new ImageIcon(new ImageIcon("icons/chevron-up-solid.png").getImage().getScaledInstance(18, 20, Image.SCALE_DEFAULT)));
+        menu_btn_expand = new JButton(new ImageIcon(new ImageIcon("icons/normal/chevron-up.png").getImage().getScaledInstance(25,25, Image.SCALE_DEFAULT)));
         menu_btn_expand.addActionListener(new menuCollapse());
         menu_btn_expand.setBackground(bluish_gray);
         menu_btn_expand.setBorderPainted(false);
         menu_btn_expand.setFocusPainted(false);
+        menu_btn_expand.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+               menu_btn_expand.setIcon(new ImageIcon(new ImageIcon("icons/hover/chevron-up-hover.png").getImage().getScaledInstance(25, 25, Image.SCALE_DEFAULT)));
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+               menu_btn_expand.setBackground(bluish_gray);
+               menu_btn_expand.setIcon(new ImageIcon(new ImageIcon("icons/normal/chevron-up.png").getImage().getScaledInstance(25, 25, Image.SCALE_DEFAULT)));
+            }
+        });
         JLabel menu_title = new JLabel("App Tools");
+        menu_title.setFont(new Font("Arial", Font.BOLD, h6));
         menu_title.setForeground(whitish_gray);
         header.setBackground(bluish_gray);
         header.add(menu_btn_expand, BorderLayout.WEST);
@@ -229,26 +255,32 @@ public class MainWindow2 extends JFrame {
 
         // SHAPES
         JPanel shapes_panel = new JPanel(new BorderLayout());
-        shapes_panel.setBackground(bluish_gray);
         JLabel shapes_label = new JLabel("Shapes", SwingConstants.CENTER);
+        shapes_label.setFont(new Font("Arial", Font.PLAIN, h4));
+        shapes_label.setForeground(light_whitish_gray);
         shapes_panel.add(shapes_label, BorderLayout.NORTH);
+        shapes_panel.setBackground(bluish_gray);
         JPanel shapes_container = new JPanel(new GridLayout(2, 2));
         shapes_container.setBackground(bluish_gray);
 
-        line_btn = new JButton(new ImageIcon(new ImageIcon("icons/slash-solid.png").getImage().getScaledInstance(16, 16, Image.SCALE_DEFAULT)));
+        line_btn = new JButton(new ImageIcon(new ImageIcon("icons/normal/line.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT)));
         line_btn.addActionListener(new drawingToolHandler());
+        line_btn.setToolTipText("Draw Line");
         shapes_container.add(line_btn);
 
-        circle_btn = new JButton(new ImageIcon(new ImageIcon("icons/circle-regular.png").getImage().getScaledInstance(16, 16, Image.SCALE_DEFAULT)));
+        circle_btn = new JButton(new ImageIcon(new ImageIcon("icons/normal/circle.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT)));
         circle_btn.addActionListener(new drawingToolHandler());
+        circle_btn.setToolTipText("Draw Circle");
         shapes_container.add(circle_btn);
 
-        square_btn = new JButton(new ImageIcon(new ImageIcon("icons/square-regular.png").getImage().getScaledInstance(16, 16, Image.SCALE_DEFAULT)));
+        square_btn = new JButton(new ImageIcon(new ImageIcon("icons/normal/square.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT)));
         square_btn.addActionListener(new drawingToolHandler());
+        square_btn.setToolTipText("Draw Rectangle");
         shapes_container.add(square_btn);
 
-        polygon_btn = new JButton(new ImageIcon(new ImageIcon("icons/draw-polygon-solid.png").getImage().getScaledInstance(16, 16, Image.SCALE_DEFAULT)));
+        polygon_btn = new JButton(new ImageIcon(new ImageIcon("icons/normal/polygon.png").getImage().getScaledInstance(30, 32, Image.SCALE_DEFAULT)));
         polygon_btn.addActionListener(new drawingToolHandler());
+        polygon_btn.setToolTipText("Draw Polygon");
         shapes_container.add(polygon_btn);
 
         shapes_panel.add(shapes_container, BorderLayout.CENTER);
@@ -258,16 +290,24 @@ public class MainWindow2 extends JFrame {
         JPanel colour_panel = new JPanel(new BorderLayout());
         colour_panel.setBackground(bluish_gray);
         JLabel colour_label = new JLabel("Colour", SwingConstants.CENTER);
+        colour_label.setFont(new Font("Arial", Font.PLAIN, h4));
+        colour_label.setForeground(light_whitish_gray);
         colour_panel.add(colour_label, BorderLayout.NORTH);
         JPanel colour_container = new JPanel(new GridLayout(2, 1));
         colour_container.setBackground(bluish_gray);
 
-        color_picker_btn = new JButton("Choose color");
+        JPanel c = new JPanel(new FlowLayout());
+        c.setBackground(bluish_gray);
+        color_picker_btn = new JButton("Pick Color");
+        color_picker_btn.setToolTipText("Click to open color picker");
+        color_picker_btn.setFont(new Font("Arial", Font.BOLD, h3));
         color_picker_btn.addActionListener(new btnColorPickerHandler());
-        colour_container.add(color_picker_btn);
+        c.add(color_picker_btn);
+        colour_container.add(c);
 
-        apply_color_btn = new JButton(new ImageIcon(new ImageIcon("icons/paint-roller-solid.png").getImage().getScaledInstance(16, 16, Image.SCALE_DEFAULT)));
+        apply_color_btn = new JButton(new ImageIcon(new ImageIcon("icons/normal/paint.png").getImage().getScaledInstance(24, 24, Image.SCALE_DEFAULT)));
         apply_color_btn.addActionListener(new btnFillHandler());
+        apply_color_btn.setToolTipText("Click to apply color on drawing");
         colour_container.add(apply_color_btn);
 
         colour_panel.add(colour_container, BorderLayout.CENTER);
@@ -277,13 +317,20 @@ public class MainWindow2 extends JFrame {
         JPanel transform_panel = new JPanel(new BorderLayout());
         transform_panel.setBackground(bluish_gray);
         JLabel transform_label = new JLabel("Transform", SwingConstants.CENTER);
+        transform_label.setFont(new Font("Arial", Font.PLAIN, h4));
+        transform_label.setForeground(light_whitish_gray);
         transform_panel.add(transform_label, BorderLayout.NORTH);
         JPanel transform_container = new JPanel(new GridLayout(2, 1));
         transform_container.setBackground(bluish_gray);
 
-        transform_picker_btn = new JButton("Choose transformation");
+        JPanel t = new JPanel(new FlowLayout());
+        t.setBackground(bluish_gray);
+        transform_picker_btn = new JButton("Pick Type");
+        transform_picker_btn.setToolTipText("Click to open configurations");
+        transform_picker_btn.setFont(new Font("Arial", Font.BOLD, h3));
         transform_picker_btn.addActionListener(new transformDetails());
-        transform_container.add(transform_picker_btn);
+        t.add(transform_picker_btn);
+        transform_container.add(t);
         transformations();
         transformation_panel.setVisible(false);
 
@@ -296,16 +343,24 @@ public class MainWindow2 extends JFrame {
         JPanel clip_panel = new JPanel(new BorderLayout());
         clip_panel.setBackground(bluish_gray);
         JLabel clip_label = new JLabel("Clip", SwingConstants.CENTER);
+        clip_label.setFont(new Font("Arial", Font.PLAIN, h4));
+        clip_label.setForeground(light_whitish_gray);
         clip_panel.add(clip_label, BorderLayout.NORTH);
         JPanel clip_container = new JPanel(new GridLayout(2, 1));
         clip_container.setBackground(bluish_gray);
 
-        clip_btn = new JButton("Start clipping");
+        JPanel cl = new JPanel(new FlowLayout());
+        cl.setBackground(bluish_gray);
+        clip_btn = new JButton("Pick Clip");
+        clip_btn.setToolTipText("Click to start cropping");
+        clip_btn.setFont(new Font("Arial", Font.BOLD, h3));
         clip_btn.addActionListener(new btnClippingHandler());
-        clip_container.add(clip_btn);
+        cl.add(clip_btn);
+        clip_container.add(cl);
 
-        apply_clip_btn = new JButton(new ImageIcon(new ImageIcon("icons/crop-simple-solid.png").getImage().getScaledInstance(16, 16, Image.SCALE_DEFAULT)));
+        apply_clip_btn = new JButton(new ImageIcon(new ImageIcon("icons/normal/crop.png").getImage().getScaledInstance(24, 24, Image.SCALE_DEFAULT)));
         apply_clip_btn.addActionListener(new btnClippingHandler());
+        apply_clip_btn.setToolTipText("Apply the clip on screen");
         clip_container.add(apply_clip_btn);
 
         clip_panel.add(clip_container);
@@ -316,19 +371,172 @@ public class MainWindow2 extends JFrame {
         JPanel animate_panel = new JPanel(new BorderLayout());
         animate_panel.setBackground(bluish_gray);
         JLabel animate_label = new JLabel("Animation", SwingConstants.CENTER);
+        animate_label.setFont(new Font("Arial", Font.PLAIN, h4));
+        animate_label.setForeground(light_whitish_gray);
         animate_panel.add(animate_label, BorderLayout.NORTH);
         JPanel animate_container = new JPanel(new GridLayout(1, 2));
         animate_container.setBackground(bluish_gray);
 
-        play_btn = new JButton(new ImageIcon(new ImageIcon("icons/play-solid.png").getImage().getScaledInstance(16, 16, Image.SCALE_DEFAULT)));
+        play_btn = new JButton(new ImageIcon(new ImageIcon("icons/normal/play.png").getImage().getScaledInstance(24, 24, Image.SCALE_DEFAULT)));
+        play_btn.setToolTipText("Click to play animation");
         animate_container.add(play_btn);
 
-        clear_btn = new JButton(new ImageIcon(new ImageIcon("icons/rotate-solid.png").getImage().getScaledInstance(16, 16, Image.SCALE_DEFAULT)));
+        clear_btn = new JButton(new ImageIcon(new ImageIcon("icons/normal/rotate.png").getImage().getScaledInstance(24, 24, Image.SCALE_DEFAULT)));
+        clear_btn.setToolTipText("Click to clear animation buffer");
         animate_container.add(clear_btn);
 
         animate_panel.add(animate_container, BorderLayout.CENTER);
 
         tools_container.add(animate_panel);
+
+        // Styling buttons
+        line_btn.setBackground(bluish_gray);
+        line_btn.setBorderPainted(false);
+        line_btn.setFocusPainted(false);
+        line_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+               line_btn.setIcon(new ImageIcon(new ImageIcon("icons/hover/line-hover.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT)));
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+               line_btn.setBackground(bluish_gray);
+               line_btn.setIcon(new ImageIcon(new ImageIcon("icons/normal/line.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT)));
+            }
+        });
+
+        square_btn.setBackground(bluish_gray);
+        square_btn.setBorderPainted(false);
+        square_btn.setFocusPainted(false);
+        square_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+               square_btn.setIcon(new ImageIcon(new ImageIcon("icons/hover/square-hover.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT)));
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+               square_btn.setBackground(bluish_gray);
+               square_btn.setIcon(new ImageIcon(new ImageIcon("icons/normal/square.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT)));
+            }
+        });
+
+        circle_btn.setBackground(bluish_gray);
+        circle_btn.setBorderPainted(false);
+        circle_btn.setFocusPainted(false);
+        circle_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+               circle_btn.setIcon(new ImageIcon(new ImageIcon("icons/hover/circle-hover.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT)));
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+               circle_btn.setBackground(bluish_gray);
+               circle_btn.setIcon(new ImageIcon(new ImageIcon("icons/normal/circle.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT)));
+            }
+        });
+        
+
+        polygon_btn.setBackground(bluish_gray);
+        polygon_btn.setBorderPainted(false);
+        polygon_btn.setFocusPainted(false);
+        polygon_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+               polygon_btn.setIcon(new ImageIcon(new ImageIcon("icons/hover/polygon-hover.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT)));
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+               polygon_btn.setBackground(bluish_gray);
+               polygon_btn.setIcon(new ImageIcon(new ImageIcon("icons/normal/polygon.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT)));
+            }
+        });
+
+        color_picker_btn.setBackground(bluish_gray);
+        color_picker_btn.setBorderPainted(false);
+        color_picker_btn.setFocusPainted(false);
+        color_picker_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+               color_picker_btn.setForeground(dark_bluish_gray);
+               color_picker_btn.setBackground(light_bluish_gray);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+               color_picker_btn.setBackground(bluish_gray);
+               color_picker_btn.setForeground(dark_grayish_green);
+            }
+        });
+
+        apply_color_btn.setBackground(bluish_gray);
+        apply_color_btn.setBorderPainted(false);
+        apply_color_btn.setFocusPainted(false);
+        apply_color_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+               apply_color_btn.setIcon(new ImageIcon(new ImageIcon("icons/hover/paint-hover.png").getImage().getScaledInstance(24, 24, Image.SCALE_DEFAULT)));
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+               apply_color_btn.setBackground(bluish_gray);
+               apply_color_btn.setIcon(new ImageIcon(new ImageIcon("icons/normal/paint.png").getImage().getScaledInstance(24, 24, Image.SCALE_DEFAULT)));
+            }
+        });
+
+        transform_picker_btn.setBackground(bluish_gray);
+        transform_picker_btn.setBorderPainted(false);
+        transform_picker_btn.setFocusPainted(false);
+        transform_picker_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+               transform_picker_btn.setForeground(dark_bluish_gray);
+               transform_picker_btn.setBackground(light_bluish_gray);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+               transform_picker_btn.setBackground(bluish_gray);
+               transform_picker_btn.setForeground(dark_grayish_green);
+            }
+        });
+
+        clip_btn.setBackground(bluish_gray);
+        clip_btn.setBorderPainted(false);
+        clip_btn.setFocusPainted(false);
+        clip_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+               clip_btn.setForeground(dark_bluish_gray);
+               clip_btn.setBackground(light_bluish_gray);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+               clip_btn.setBackground(bluish_gray);
+               clip_btn.setForeground(dark_grayish_green);
+               
+            }
+        });
+
+        apply_clip_btn.setBackground(bluish_gray);
+        apply_clip_btn.setBorderPainted(false);
+        apply_clip_btn.setFocusPainted(false);
+        apply_clip_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+               apply_clip_btn.setIcon(new ImageIcon(new ImageIcon("icons/hover/crop-hover.png").getImage().getScaledInstance(24, 24, Image.SCALE_DEFAULT)));
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+               apply_clip_btn.setBackground(bluish_gray);
+               apply_clip_btn.setIcon(new ImageIcon(new ImageIcon("icons/normal/crop.png").getImage().getScaledInstance(24, 24, Image.SCALE_DEFAULT)));
+            }
+        });
+
+        clear_btn.setBackground(bluish_gray);
+        clear_btn.setBorderPainted(false);
+        clear_btn.setFocusPainted(false);
+        clear_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+               clear_btn.setIcon(new ImageIcon(new ImageIcon("icons/hover/rotate-hover.png").getImage().getScaledInstance(24, 24, Image.SCALE_DEFAULT)));
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+               clear_btn.setBackground(bluish_gray);
+               clear_btn.setIcon(new ImageIcon(new ImageIcon("icons/normal/rotate.png").getImage().getScaledInstance(24, 24, Image.SCALE_DEFAULT)));
+            }
+        });
+
+        play_btn.setBackground(bluish_gray);
+        play_btn.setBorderPainted(false);
+        play_btn.setFocusPainted(false);
+        play_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+               play_btn.setIcon(new ImageIcon(new ImageIcon("icons/hover/play-hover.png").getImage().getScaledInstance(24, 24, Image.SCALE_DEFAULT)));
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+               play_btn.setBackground(bluish_gray);
+               play_btn.setIcon(new ImageIcon(new ImageIcon("icons/normal/play.png").getImage().getScaledInstance(24, 24, Image.SCALE_DEFAULT)));
+            }
+        });
 
 
         full_menu_panel.add(tools_container, BorderLayout.CENTER);
@@ -344,10 +552,11 @@ public class MainWindow2 extends JFrame {
         transformation_panel.setPreferredSize(new Dimension(400, Toolkit.getDefaultToolkit().getScreenSize().height));
         
         JPanel header2 = new JPanel(new BorderLayout());
-        tranform_close_btn = new JButton(new ImageIcon(new ImageIcon("icons/close.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+        tranform_close_btn = new JButton(new ImageIcon(new ImageIcon("icons/normal/close2.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
         tranform_close_btn.addActionListener(new transformClose());
         header2.add(tranform_close_btn, BorderLayout.WEST);
-        JLabel transform_title = new JLabel("Configuration");
+        JLabel transform_title = new JLabel("   Configuration");
+        transform_title.setFont(new Font("Arial", Font.PLAIN, h5));
         header2.add(transform_title, BorderLayout.CENTER);
         transformation_panel.add(header2, BorderLayout.NORTH);
 
@@ -355,6 +564,7 @@ public class MainWindow2 extends JFrame {
 
         JPanel choosetype_panel = new JPanel(new GridLayout(1, 2));
         JLabel select_type_label = new JLabel("Select type", SwingConstants.CENTER);
+        select_type_label.setFont(new Font("Arial", Font.BOLD, h5));
         choosetype_panel.add(select_type_label);
         String[] transformationOptions = {"Translation", "Normal Rotation", "Rotation about Fixed Point", "Normal Scaling", "Scaling about Fixed Point", "Shear", "Reflections"};
 		jcb_transformations = new JComboBox<String>(transformationOptions);
@@ -368,9 +578,41 @@ public class MainWindow2 extends JFrame {
 
         transformation_panel.add(transformation_content, BorderLayout.CENTER);
 
-        apply_transform_btn = new JButton(new ImageIcon(new ImageIcon("icons/wand-sparkles-solid.png").getImage().getScaledInstance(16, 16, Image.SCALE_DEFAULT)));
+        apply_transform_btn = new JButton(new ImageIcon(new ImageIcon("icons/normal/wand.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT)));
         apply_transform_btn.addActionListener(new btnApplyTransHandler());
+        apply_transform_btn.setToolTipText("Click to apply transformation");
         transformation_panel.add(apply_transform_btn, BorderLayout.SOUTH);
+
+        // Styles
+        tranform_close_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+               tranform_close_btn.setIcon(new ImageIcon(new ImageIcon("icons/hover/close-hover.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+               tranform_close_btn.setBackground(whitish_gray);
+               tranform_close_btn.setIcon(new ImageIcon(new ImageIcon("icons/normal/close2.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+            }
+        });
+        transformation_panel.setBackground(whitish_gray);
+        choosetype_panel.setBackground(whitish_gray);
+        tranform_close_btn.setBackground(whitish_gray);
+        tranform_close_btn.setBorderPainted(false);
+        tranform_close_btn.setFocusPainted(false);
+        transformation_content.setBackground(whitish_gray);
+        header2.setBackground(whitish_gray);
+        jcb_transformations.setBackground(whitish_gray);
+        apply_transform_btn.setBackground(whitish_gray);
+        apply_transform_btn.setBorderPainted(false);
+        apply_transform_btn.setFocusPainted(false);
+        apply_transform_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+               apply_transform_btn.setIcon(new ImageIcon(new ImageIcon("icons/hover/wand-hover.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT)));
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+               apply_transform_btn.setBackground(whitish_gray);
+               apply_transform_btn.setIcon(new ImageIcon(new ImageIcon("icons/normal/wand.png").getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT)));
+            }
+        });
 
         content_panel.add(transformation_panel, BorderLayout.EAST);
     }
@@ -507,107 +749,214 @@ public class MainWindow2 extends JFrame {
 
     public void showTransformDetails(){
         //Translation
-        translation_panel = new JPanel(new GridLayout(2, 2));
-        tf_tx = new JTextField();
-        tf_ty = new JTextField();
-        JLabel lbl_tx = new JLabel(" Tx :");
-        JLabel lbl_ty = new JLabel(" Ty :");
+        translation_panel = new JPanel(new GridLayout(10, 1));
+        translation_panel.setBackground(whitish_gray);
 
-        translation_panel.add(lbl_tx);
-        translation_panel.add(tf_tx);
-        translation_panel.add(lbl_ty);
-        translation_panel.add(tf_ty);
+        tf_tx = new JTextField(6);
+        tf_ty = new JTextField(6);
+        JPanel ttx = new JPanel(new FlowLayout());
+        ttx.setBackground(whitish_gray);
+        JLabel lbl_tx = new JLabel(" Tx :");
+        lbl_tx.setFont(new Font("Arial", Font.BOLD, h3));
+        JPanel tty = new JPanel(new FlowLayout());
+        tty.setBackground(whitish_gray);
+        JLabel lbl_ty = new JLabel(" Ty :");
+        lbl_ty.setFont(new Font("Arial", Font.BOLD, h3));
+
+        translation_panel.add(new JLabel(""));
+        translation_panel.add(new JLabel(""));
+        translation_panel.add(new JLabel(""));
+        translation_panel.add(new JLabel(""));
+        ttx.add(lbl_tx);
+        ttx.add(tf_tx);
+        translation_panel.add(ttx);
+        tty.add(lbl_ty);
+        tty.add(tf_ty);
+        translation_panel.add(tty);
         tContainer.add(translation_panel, BorderLayout.CENTER);
 
 		//Normal Rotation
-        nRotation_panel = new JPanel(new GridLayout(1, 2));
-        JLabel lbl_normalRotationDeg = new JLabel(" Rotation(Degrees) :");
-        tf_normalRotationDeg = new JTextField();
+        nRotation_panel = new JPanel(new GridLayout(10, 1));
+        nRotation_panel.setBackground(whitish_gray);
 
-        nRotation_panel.add(lbl_normalRotationDeg);
-        nRotation_panel.add(tf_normalRotationDeg);
+        JPanel nr = new JPanel(new FlowLayout());
+        nr.setBackground(whitish_gray);
+        JLabel lbl_normalRotationDeg = new JLabel(" Rotation(Degrees) :");
+        lbl_normalRotationDeg.setFont(new Font("Arial", Font.BOLD, h3));
+        tf_normalRotationDeg = new JTextField(6);
+
+        nRotation_panel.add(new JLabel(""));
+        nRotation_panel.add(new JLabel(""));
+        nRotation_panel.add(new JLabel(""));
+        nRotation_panel.add(new JLabel(""));
+        nr.add(lbl_normalRotationDeg);
+        nr.add(tf_normalRotationDeg);
+        nRotation_panel.add(nr);
 
 		
 		//Rotation about a Fixed Point
-        fpRotation_panel = new JPanel(new GridLayout(4, 2));
+        fpRotation_panel = new JPanel(new GridLayout(10, 1));
+        fpRotation_panel.setBackground(whitish_gray);
+
+        JPanel fpr = new JPanel(new FlowLayout());
+        fpr.setBackground(whitish_gray);
+        JPanel xr = new JPanel(new FlowLayout());
+        xr.setBackground(whitish_gray);
+        JPanel yr = new JPanel(new FlowLayout());
+        yr.setBackground(whitish_gray);
 
         JLabel lbl_fpRotationDeg = new JLabel(" Rotation(Degrees) :");
-        tf_fpRotationDeg = new JTextField(5);
-        JLabel lbl_fpRotationPtSelection = new JLabel(" Fixed Point :");
+        lbl_fpRotationDeg.setFont(new Font("Arial", Font.BOLD, h3));
+        tf_fpRotationDeg = new JTextField(6);
+        JLabel lbl_fpRotationPtSelection = new JLabel("Fixed Point:", SwingConstants.CENTER);
+        lbl_fpRotationPtSelection.setFont(new Font("Arial", Font.PLAIN, h3));
         JLabel lbl_fpRotationX = new JLabel("   X ");
-        tf_fpRotationX = new JTextField(4);
+        lbl_fpRotationX.setFont(new Font("Arial", Font.BOLD, h3));
+        tf_fpRotationX = new JTextField(6);
         JLabel lbl_fpRotationY = new JLabel("   Y ");
-		tf_fpRotationY = new JTextField(4);
+        lbl_fpRotationY.setFont(new Font("Arial", Font.BOLD, h3));
+		tf_fpRotationY = new JTextField(6);
 
-        fpRotation_panel.add(lbl_fpRotationDeg);
-        fpRotation_panel.add(tf_fpRotationDeg);
-        fpRotation_panel.add(lbl_fpRotationPtSelection);
+        fpr.add(lbl_fpRotationDeg);
+        fpr.add(tf_fpRotationDeg);
+        xr.add(lbl_fpRotationX);
+        xr.add(tf_fpRotationX);
+        yr.add(lbl_fpRotationY);
+        yr.add(tf_fpRotationY);
+
         fpRotation_panel.add(new JLabel(""));
-        fpRotation_panel.add(lbl_fpRotationX);
-        fpRotation_panel.add(tf_fpRotationX);
-        fpRotation_panel.add(lbl_fpRotationY);
-        fpRotation_panel.add(tf_fpRotationY);
+        fpRotation_panel.add(new JLabel(""));
+        fpRotation_panel.add(new JLabel(""));
+        fpRotation_panel.add(new JLabel(""));
+        fpRotation_panel.add(fpr);
+        fpRotation_panel.add(lbl_fpRotationPtSelection);
+        fpRotation_panel.add(xr);
+        fpRotation_panel.add(yr);
 		
 		//Normal Scaling
-        nScaling_panel = new JPanel(new GridLayout(2, 2));
+        nScaling_panel = new JPanel(new GridLayout(10, 1));
+        nScaling_panel.setBackground(whitish_gray);
+
+        JPanel sx = new JPanel(new FlowLayout());
+        sx.setBackground(whitish_gray);
+        JPanel sy = new JPanel(new FlowLayout());
+        sy.setBackground(whitish_gray);
 
         JLabel lbl_normalScalingSx = new JLabel("Sx :");
-        tf_normalScalingSx = new JTextField(5);
+        lbl_normalScalingSx.setFont(new Font("Arial", Font.BOLD, h3));
+        tf_normalScalingSx = new JTextField(6);
         JLabel lbl_normalScalingSy = new JLabel("Sy :");
-        tf_normalScalingSy = new JTextField(5);
+        lbl_normalScalingSy.setFont(new Font("Arial", Font.BOLD, h3));
+        tf_normalScalingSy = new JTextField(6);
 
-        nScaling_panel.add(lbl_normalScalingSx);
-        nScaling_panel.add(tf_normalScalingSx);
-        nScaling_panel.add(lbl_normalScalingSy);
-        nScaling_panel.add(tf_normalScalingSy);
+        sx.add(lbl_normalScalingSx);
+        sx.add(tf_normalScalingSx);
+        sy.add(lbl_normalScalingSy);
+        sy.add(tf_normalScalingSy);
+
+        nScaling_panel.add(new JLabel(""));
+        nScaling_panel.add(new JLabel(""));
+        nScaling_panel.add(new JLabel(""));
+        nScaling_panel.add(new JLabel(""));
+        nScaling_panel.add(sx);
+        nScaling_panel.add(sy);
 		
 		//Scaling about a Fixed Point
-        fpScaling_panel = new JPanel(new GridLayout(5, 2));
+        fpScaling_panel = new JPanel(new GridLayout(10, 1));
+        fpScaling_panel.setBackground(whitish_gray);
 
-        JLabel lbl_fpScalingSx = new JLabel("Sx :");
-        tf_fpScalingSx = new JTextField(5);
-        JLabel lbl_fpScalingSy = new JLabel("Sy :");
-        tf_fpScalingSy = new JTextField(5);
-        JLabel lbl_fpScalingPtSelection = new JLabel("Fixed Point :");
+        JPanel fpsx = new JPanel(new FlowLayout());
+        fpsx.setBackground(whitish_gray);
+        JPanel fpsy = new JPanel(new FlowLayout());
+        fpsy.setBackground(whitish_gray);
+        JPanel fpsxp = new JPanel(new FlowLayout());
+        fpsxp.setBackground(whitish_gray);
+        JPanel fpsyp = new JPanel(new FlowLayout());
+        fpsyp.setBackground(whitish_gray);
+
+        JLabel lbl_fpScalingSx = new JLabel("  Sx :");
+        lbl_fpScalingSx.setFont(new Font("Arial", Font.BOLD, h3));
+        tf_fpScalingSx = new JTextField(6);
+        JLabel lbl_fpScalingSy = new JLabel("  Sy :");
+        lbl_fpScalingSy.setFont(new Font("Arial", Font.BOLD, h3));
+        tf_fpScalingSy = new JTextField(6);
+        JLabel lbl_fpScalingPtSelection = new JLabel("Fixed Point:", SwingConstants.CENTER);
+        lbl_fpScalingPtSelection.setFont(new Font("Arial", Font.PLAIN, h3));
 		JLabel lbl_fpScalingX = new JLabel("   X ");
-		tf_fpScalingX = new JTextField(4);
+        lbl_fpScalingX.setFont(new Font("Arial", Font.BOLD, h3));
+		tf_fpScalingX = new JTextField(6);
         JLabel lbl_fpScalingY = new JLabel("   Y ");
-		tf_fpScalingY = new JTextField(4);
+        lbl_fpScalingY.setFont(new Font("Arial", Font.BOLD, h3));
+		tf_fpScalingY = new JTextField(6);
 
-		fpScaling_panel.add(lbl_fpScalingSx);
-        fpScaling_panel.add(tf_fpScalingSx);
-        fpScaling_panel.add(lbl_fpScalingSy);
-        fpScaling_panel.add(tf_fpScalingSy);
-        fpScaling_panel.add(lbl_fpScalingPtSelection);
+        fpsx.add(lbl_fpScalingSx);
+        fpsx.add(tf_fpScalingSx);
+        fpsy.add(lbl_fpScalingSy);
+        fpsy.add(tf_fpScalingSy);
+        fpsxp.add(lbl_fpScalingX);
+        fpsxp.add(tf_fpScalingX);
+        fpsyp.add(lbl_fpScalingY);
+        fpsyp.add(tf_fpScalingY);
+
+		fpScaling_panel.add(new JLabel(""));
         fpScaling_panel.add(new JLabel(""));
-        fpScaling_panel.add(lbl_fpScalingX);
-        fpScaling_panel.add(tf_fpScalingX);
-        fpScaling_panel.add(lbl_fpScalingY);
-        fpScaling_panel.add(tf_fpScalingY);
+        fpScaling_panel.add(new JLabel(""));
+        fpScaling_panel.add(new JLabel(""));
+        fpScaling_panel.add(fpsx);
+        fpScaling_panel.add(fpsy);
+        fpScaling_panel.add(lbl_fpScalingPtSelection);
+        fpScaling_panel.add(fpsxp);
+        fpScaling_panel.add(fpsyp);
 		
 		//Shearing
-        shear_panel = new JPanel(new GridLayout(2, 2));
+        shear_panel = new JPanel(new GridLayout(10, 1));
+        shear_panel.setBackground(whitish_gray);
+
+        JPanel s1 = new JPanel(new FlowLayout());
+        s1.setBackground(whitish_gray);
+        JPanel s2 = new JPanel(new FlowLayout());
+        s2.setBackground(whitish_gray);
 
         JLabel lbl_shearOptions = new JLabel("Shear Option :");
+        lbl_shearOptions.setFont(new Font("Arial", Font.BOLD, h3));
 		String[] shearOptions = {"Along X-axis", "Along Y-axis"};
 		jcb_shearOptions = new JComboBox<String>(shearOptions);
         JLabel lbl_shearFactor = new JLabel("Shear Factor :");
+        lbl_shearFactor.setFont(new Font("Arial", Font.BOLD, h3));
 		tf_shearFactor = new JTextField(5);
 
-        shear_panel.add(lbl_shearOptions);
-        shear_panel.add(jcb_shearOptions);
-        shear_panel.add(lbl_shearFactor);
-        shear_panel.add(tf_shearFactor);
+        s1.add(lbl_shearOptions);
+        s1.add(jcb_shearOptions);
+        s2.add(lbl_shearFactor);
+        s2.add(tf_shearFactor);
+
+        shear_panel.add(new JLabel(""));
+        shear_panel.add(new JLabel(""));
+        shear_panel.add(new JLabel(""));
+        shear_panel.add(new JLabel(""));
+        shear_panel.add(s2);
+        shear_panel.add(s1);
 
 		//Reflections
-        reflection_panel = new JPanel(new GridLayout(1, 2));
+        reflection_panel = new JPanel(new GridLayout(10, 1));
+        reflection_panel.setBackground(whitish_gray);
+
+        JPanel rf = new JPanel(new FlowLayout());
+        rf.setBackground(whitish_gray);
 
         JLabel lbl_reflectionOptions = new JLabel("Reflection Option :");
+        lbl_reflectionOptions.setFont(new Font("Arial", Font.BOLD, h3));
         String[] reflectionOptions = {"Along X-axis", "Along Y-axis", "Along line Y=X", "Along line Y=-X", "Along the Origin"};
         jcb_reflectionOptions = new JComboBox<String>(reflectionOptions);
 
-        reflection_panel.add(lbl_reflectionOptions);
-        reflection_panel.add(jcb_reflectionOptions);
+        rf.add(lbl_reflectionOptions);
+        rf.add(jcb_reflectionOptions);
+
+        reflection_panel.add(new JLabel(""));
+        reflection_panel.add(new JLabel(""));
+        reflection_panel.add(new JLabel(""));
+        reflection_panel.add(new JLabel(""));
+        reflection_panel.add(rf);
     }
 
     public class btnApplyTransHandler implements ActionListener {
@@ -660,7 +1009,9 @@ public class MainWindow2 extends JFrame {
 	    }
     }
 		
-    
+    public void HoverEffectsMenu(){}
+
+    public void HoverEffectsTransform(){}
 
     public static void main(String[] args) {
         new MainWindow2();
