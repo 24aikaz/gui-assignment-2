@@ -17,7 +17,7 @@ public class welcome extends JFrame{
     Color dark_grayish_green = new Color(40, 54, 61);
 
     // Title bar buttons
-    JButton minimize_btn, maximize_btn, close_btn;
+    JButton minimize_btn, maximize_btn, close_btn, resize_btn;
 
     //Other buttons
     JButton start_btn;
@@ -39,21 +39,26 @@ public class welcome extends JFrame{
         JPanel button_container = new JPanel(new FlowLayout());
         button_container.setBackground(light_bluish_gray);
         
-        close_btn = new JButton(new ImageIcon(new ImageIcon("icons/close.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+        close_btn = new JButton(new ImageIcon(new ImageIcon("icons/close2.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
         close_btn.setBackground(light_bluish_gray);
         close_btn.setBorderPainted(false);
         close_btn.setFocusPainted(false);
         close_btn.addActionListener(new btnCloseHandler());
 
-        maximize_btn = new JButton(new ImageIcon(new ImageIcon("icons/window-restore-regular.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
-        maximize_btn.setBackground(light_bluish_gray);
-        maximize_btn.setBorderPainted(false);
-        maximize_btn.setFocusPainted(false);
+        resize_btn = new JButton(new ImageIcon(new ImageIcon("icons/resize.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+        resize_btn.setBackground(light_bluish_gray);
+        resize_btn.setBorderPainted(false);
+        resize_btn.setFocusPainted(false);
 
-        minimize_btn = new JButton(new ImageIcon(new ImageIcon("icons/window-minimize-solid.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+        minimize_btn = new JButton(new ImageIcon(new ImageIcon("icons/minimize.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
         minimize_btn.setBackground(light_bluish_gray);
         minimize_btn.setBorderPainted(false);
         minimize_btn.setFocusPainted(false);
+
+        maximize_btn = new JButton(new ImageIcon(new ImageIcon("icons/window-maximize.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+        maximize_btn.setBackground(light_bluish_gray);
+        maximize_btn.setBorderPainted(false);
+        maximize_btn.setFocusPainted(false);
         
         titlebar_panel.setPreferredSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width, 30));
         titlebar_panel.setBackground(light_bluish_gray);
@@ -117,7 +122,6 @@ public class welcome extends JFrame{
 
         content_panel.add(labels);
 
-
         add(content_panel, BorderLayout.CENTER);
 
         // Button panel
@@ -144,6 +148,42 @@ public class welcome extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Hover effects
+        close_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+               close_btn.setIcon(new ImageIcon(new ImageIcon("icons/hover/close-hover.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+               close_btn.setBackground(light_bluish_gray);
+               close_btn.setIcon(new ImageIcon(new ImageIcon("icons/close2.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+            }
+        });
+        resize_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+               resize_btn.setIcon(new ImageIcon(new ImageIcon("icons/hover/resize-hover.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+               resize_btn.setBackground(light_bluish_gray);
+               resize_btn.setIcon(new ImageIcon(new ImageIcon("icons/resize.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+            }
+        });
+        minimize_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+               minimize_btn.setIcon(new ImageIcon(new ImageIcon("icons/hover/minimize-hover.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+               minimize_btn.setBackground(light_bluish_gray);
+               minimize_btn.setIcon(new ImageIcon(new ImageIcon("icons/minimize.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+            }
+        });
+        maximize_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+               maximize_btn.setIcon(new ImageIcon(new ImageIcon("icons/hover/window-maximize-hover.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+               maximize_btn.setBackground(light_bluish_gray);
+               maximize_btn.setIcon(new ImageIcon(new ImageIcon("icons/window-maximize.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+            }
+        });
         start_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                start_btn.setIcon(new ImageIcon(new ImageIcon("icons/hover/power-hover.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));

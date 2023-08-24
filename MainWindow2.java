@@ -22,7 +22,7 @@ public class MainWindow2 extends JFrame {
     JFrame frame; // the main frame
 
     // Title bar buttons
-    JButton minimize_btn, maximize_btn, close_btn;
+    JButton minimize_btn, maximize_btn, close_btn, resize_btn;
 
     //Menu buttons
     JButton menu_btn_collapse, menu_btn_expand; 
@@ -49,26 +49,31 @@ public class MainWindow2 extends JFrame {
         JPanel button_container = new JPanel(new FlowLayout());
         button_container.setBackground(light_bluish_gray);
         
-        close_btn = new JButton(new ImageIcon(new ImageIcon("icons/close.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+        close_btn = new JButton(new ImageIcon(new ImageIcon("icons/close2.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
         close_btn.setBackground(light_bluish_gray);
         close_btn.setBorderPainted(false);
         close_btn.setFocusPainted(false);
         close_btn.addActionListener(new btnCloseHandler());
 
-        maximize_btn = new JButton(new ImageIcon(new ImageIcon("icons/window-restore-regular.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
-        maximize_btn.setBackground(light_bluish_gray);
-        maximize_btn.setBorderPainted(false);
-        maximize_btn.setFocusPainted(false);
+        resize_btn = new JButton(new ImageIcon(new ImageIcon("icons/resize.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+        resize_btn.setBackground(light_bluish_gray);
+        resize_btn.setBorderPainted(false);
+        resize_btn.setFocusPainted(false);
 
-        minimize_btn = new JButton(new ImageIcon(new ImageIcon("icons/window-minimize-solid.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+        minimize_btn = new JButton(new ImageIcon(new ImageIcon("icons/minimize.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
         minimize_btn.setBackground(light_bluish_gray);
         minimize_btn.setBorderPainted(false);
         minimize_btn.setFocusPainted(false);
+
+        maximize_btn = new JButton(new ImageIcon(new ImageIcon("icons/window-maximize.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+        maximize_btn.setBackground(light_bluish_gray);
+        maximize_btn.setBorderPainted(false);
+        maximize_btn.setFocusPainted(false);
         
         titlebar_panel.setPreferredSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width, 30));
         titlebar_panel.setBackground(light_bluish_gray);
         button_container.add(minimize_btn);
-        button_container.add(maximize_btn);
+        button_container.add(resize_btn);
         button_container.add(close_btn);
         titlebar_panel.add(button_container, BorderLayout.EAST);
 
@@ -86,12 +91,40 @@ public class MainWindow2 extends JFrame {
         // Button effects
         close_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-               close_btn.setBackground(light_grayish_green);
+               close_btn.setIcon(new ImageIcon(new ImageIcon("icons/hover/close-hover.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                close_btn.setBackground(light_bluish_gray);
+               close_btn.setIcon(new ImageIcon(new ImageIcon("icons/close2.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
             }
-        }); 
+        });
+        resize_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+               resize_btn.setIcon(new ImageIcon(new ImageIcon("icons/hover/resize-hover.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+               resize_btn.setBackground(light_bluish_gray);
+               resize_btn.setIcon(new ImageIcon(new ImageIcon("icons/resize.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+            }
+        });
+        minimize_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+               minimize_btn.setIcon(new ImageIcon(new ImageIcon("icons/hover/minimize-hover.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+               minimize_btn.setBackground(light_bluish_gray);
+               minimize_btn.setIcon(new ImageIcon(new ImageIcon("icons/minimize.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+            }
+        });
+        maximize_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+               maximize_btn.setIcon(new ImageIcon(new ImageIcon("icons/hover/window-maximize-hover.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+               maximize_btn.setBackground(light_bluish_gray);
+               maximize_btn.setIcon(new ImageIcon(new ImageIcon("icons/window-maximize.png").getImage().getScaledInstance(15, 15, Image.SCALE_DEFAULT)));
+            }
+        });
 
         //call the MENU PANEL
         CollapsedMenu();
@@ -133,7 +166,7 @@ public class MainWindow2 extends JFrame {
         full_menu_panel.setBackground(bluish_gray);
 
         JPanel header = new JPanel(new BorderLayout(ALLBITS, ABORT));
-        menu_btn_expand = new JButton(new ImageIcon(new ImageIcon("icons/chevron-left-solid.png").getImage().getScaledInstance(18, 20, Image.SCALE_DEFAULT)));
+        menu_btn_expand = new JButton(new ImageIcon(new ImageIcon("icons/chevron-up-solid.png").getImage().getScaledInstance(18, 20, Image.SCALE_DEFAULT)));
         menu_btn_expand.addActionListener(new menuCollapse());
         menu_btn_expand.setBackground(bluish_gray);
         menu_btn_expand.setBorderPainted(false);
