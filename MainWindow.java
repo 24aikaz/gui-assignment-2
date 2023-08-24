@@ -847,9 +847,7 @@ public class MainWindow extends JFrame {
 	}
 	
 	public class btnApplyTransHandler implements ActionListener {
-		
 		public void actionPerformed(ActionEvent e) {
-			
 			drawingPanel.removeAll();
 			switch (jcb_transformations.getSelectedIndex()) {
 			case 0:
@@ -894,8 +892,7 @@ public class MainWindow extends JFrame {
 			}
 		}
 		revalidate();
-		repaint();
-			
+		repaint();	
 		}
 		
 	}
